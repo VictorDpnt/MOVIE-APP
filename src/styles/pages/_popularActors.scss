@@ -1,0 +1,24 @@
+.popular-container-actors {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+  margin-bottom: 40px;
+
+  .cards-container-actors {
+    margin-right: 2.5px;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    justify-content: center;
+    margin-top: 20px;
+    justify-items: center;
+
+    .card-container-actors {
+      margin-bottom: 20px;
+      transition: 0.2s;
+      cursor: pointer;
+      &:hover {
+        scale: 1.05;
+      }
+    }
+  }
+}
