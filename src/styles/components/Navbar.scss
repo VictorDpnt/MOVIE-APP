@@ -1,0 +1,103 @@
+.nav-container {
+  .navbar {
+    z-index: 1000;
+    display: flex;
+    padding: 12px;
+    align-items: center;
+    background-color: $colorNavBar;
+
+    .nav-left {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      width: 50%;
+
+      .logo {
+        width: 200px;
+        height: 40px;
+        background: url("../../../public/img/logo.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+      }
+
+      .movie-drop {
+        letter-spacing: 1px;
+        color: white;
+        font-size: medium;
+        cursor: pointer;
+
+        &:after {
+          content: "⌄";
+          width: 10px;
+          margin-left: 5px;
+          position: absolute;
+          transform: translateY(-4px);
+        }
+
+        .sous-menus-movie {
+          display: none;
+          color: $black1;
+          position: absolute;
+          background: $colorBackground;
+          border-radius: 5px;
+          border: grey 0.6px solid;
+          transform: translateY(10px);
+          font-size: medium;
+          width: fit-content;
+          overflow-x: hidden;
+
+          &.show-movie {
+            display: block;
+          }
+
+          li {
+            padding: 10px;
+            transition: 0.2s;
+            cursor: pointer;
+            color: $black1;
+
+            &:hover {
+              scale: 1.03;
+              background: $greylight;
+            }
+          }
+        }
+      }
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      position: absolute;
+      right: 50px;
+
+      .input {
+        border-radius: 5px;
+        height: 20px;
+        background: none;
+        width: 0px;
+        margin-right: 20px;
+        border: 0.7px white solid;
+        color: $white1;
+        padding: 5px;
+        opacity: 0;
+        transition: 0.3s;
+        z-index: 100;
+
+        &.open {
+          width: 200px;
+          opacity: 1;
+        }
+      }
+
+      .loupe {
+        background: url("../../../public/img/loupe.svg");
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 50px;
+        height: 40px;
+        cursor: pointer;
+      }
+    }
+  }
+}

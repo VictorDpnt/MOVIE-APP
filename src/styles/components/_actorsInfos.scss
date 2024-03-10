@@ -1,0 +1,49 @@
+.artistes-infos {
+  display: grid;
+  grid-template-columns: 27% 73%;
+  padding: 30px 100px 0 50px;
+
+  .left-part {
+    img {
+      width: 300px;
+      border-radius: 5px;
+    }
+
+    .info-perso {
+      margin-top: 20px;
+      .dob,
+      .pob {
+        h6 {
+          font-size: large;
+        }
+      }
+
+      .dob {
+        margin-bottom: 20px;
+      }
+    }
+  }
+
+  .right-part {
+    width: 90%;
+    // height: 280px;
+    // overflow-y: scroll;
+
+    .bio {
+      margin-top: 30px;
+
+      h5 {
+        font-size: 20px;
+        font-weight: 500;
+        margin-bottom: 10px;
+      }
+
+      p {
+        font-weight: 400;
+        height: 240px;
+        overflow-y: scroll;
+        margin-bottom: 30px;
+      }
+    }
+  }
+}

@@ -1,0 +1,171 @@
+.main-infos {
+  z-index: 500;
+  width: 100%;
+  height: 70vh;
+  position: relative;
+
+  .img-background {
+    width: 100%;
+    height: 100%;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: 10% 10%;
+      filter: grayscale(60%) brightness(50%);
+      opacity: 0.9;
+    }
+  }
+
+  .infos-containt {
+    position: absolute;
+    height: 100%;
+    width: 100vw;
+    top: 0;
+    padding: 30px 60px;
+    display: grid;
+    grid-template-columns: 25% 75%;
+
+    * {
+      text-shadow: 1px 1px 2px rgb(0, 0, 0);
+    }
+
+    .img-movie {
+      width: 300px;
+      height: 450px;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        border-radius: 5px;
+      }
+    }
+
+    .details {
+      color: whitesmoke;
+      height: fit-content;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      margin-top: 50px;
+
+      .title {
+        letter-spacing: 1px;
+      }
+      .genre-date {
+        display: flex;
+        text-transform: capitalize;
+        margin-bottom: 10px;
+        .date {
+          font-weight: 400;
+          letter-spacing: 0.5px;
+
+          &:after {
+            content: "• ";
+          }
+        }
+
+        li {
+          margin: 0 5px;
+          font-weight: 400;
+
+          &:after {
+            content: "- ";
+          }
+        }
+
+        .duration {
+          font-weight: 400;
+        }
+      }
+
+      .notation {
+        margin: 15px 0;
+      }
+
+      .ba-circularBar {
+        z-index: 500;
+        display: flex;
+        align-items: center;
+        width: 25%;
+        justify-content: space-between;
+      }
+      a {
+        z-index: 1000;
+        color: rgb(253, 253, 253);
+        cursor: pointer;
+
+        &::before {
+          content: "►";
+          margin-right: 3px;
+        }
+      }
+      .tagline {
+        margin-top: 10px;
+        font-style: italic;
+        letter-spacing: 0.5px;
+        opacity: 0.8;
+      }
+
+      .synopsis-container {
+        margin: 10px 0;
+
+        h4 {
+          font-size: 25px;
+          font-weight: 400;
+          margin-bottom: 10px;
+        }
+        .synopsis {
+          width: 80%;
+        }
+      }
+
+      .budget-recette {
+        margin-top: 5px;
+        display: flex;
+        justify-content: flex-start;
+        width: 30%;
+
+        .budget {
+          margin-right: 30px;
+        }
+
+        h6 {
+          font-size: 15px;
+        }
+        p {
+          font-size: 15px;
+        }
+      }
+    }
+  }
+}
+
+.similar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 30px 0;
+
+  .similar-movies-container {
+    display: flex;
+    align-items: flex-start;
+    overflow-y: scroll;
+    width: 80%;
+    padding: 5px;
+
+    // &::-webkit-scrollbar {
+    //   display: none;
+    // }
+  }
+  h4 {
+    width: 80%;
+    text-align: left;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+    font-weight: 600;
+    font-size: larger;
+  }
+}
