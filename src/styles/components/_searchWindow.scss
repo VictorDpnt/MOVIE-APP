@@ -24,7 +24,7 @@
         display: flex;
       }
       li {
-        padding: 0px 10%;
+        padding: 0px 30%;
         color: black;
         position: relative;
 
@@ -34,18 +34,26 @@
           width: 17px;
           height: 17px;
           position: absolute;
-          left: 35px;
+          left: 25%;
           top: 3px;
           filter: invert(50);
         }
       }
 
       .details-search {
-        color: black;
         text-align: start;
+        font-weight: 200;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+
+        p {
+          color: black;
+        }
 
         .date {
           margin-left: 20px;
+          color: black;
         }
       }
     }

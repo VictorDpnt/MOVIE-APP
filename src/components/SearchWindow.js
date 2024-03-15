@@ -11,6 +11,8 @@ const SearchWindow = ({ inputSearch }) => {
       genreMedia = "Série";
     } else if (genre === "movie") {
       genreMedia = "Film";
+    } else {
+      genreMedia = "Acteur";
     }
     return genreMedia;
   };
@@ -25,34 +27,38 @@ const SearchWindow = ({ inputSearch }) => {
 
   return (
     <div className="window-containt">
-      {data.map((movie, index) => (
-        <NavLink
-          // onClick={() => {
-          //   if (movie.media_type === "tv") {
-          //     return (suce = `/SeriesPopulaires/${movie.id}`);
-          //   } else if (movie.media_type === "movie") {
-          //     return (suce = `/${movie.id}`);
-          //   } else if (movie.media_type === "person") {
-          //     return (suce = `/ActeursPopulaires/${movie.id}`);
-          //   }
-          // }}
-
-          to={movie.title ? `/${movie.id}` : `/SeriesPopulaires/${movie.id}`}
-        >
-          <div key={index} className="results">
-            <li>{movie.title ? movie.title : movie.name}</li>
-            <div className="details-search">
-              <p className="tiret"> - </p>
-              <p>{mediaGenre(movie.media_type)}</p>
-              {movie.release_date ? (
-                <p className="date">{movie.release_date}</p>
-              ) : (
-                <p className="date">{movie.first_air_date}</p>
-              )}
+      {data
+        .sort((a, b) => b.popularity - a.popularity)
+        .map((movie, index) => (
+          <NavLink
+            to={
+              movie.media_type === "movie"
+                ? `/${movie.id}`
+                : movie.media_type === "tv"
+                ? `/SeriesPopulaires/${movie.id}`
+                : `/ActeursPopulaires/${movie.id}`
+            }
+          >
+            <div key={index} className="results">
+              <li>
+                {movie.media_type === "movie"
+                  ? movie.title
+                  : movie.media_type === "tv"
+                  ? movie.name
+                  : movie.original_name}
+              </li>
+              {/* <li>{movie.title ? movie.title : movie.name}</li> */}
+              <div className="details-search">
+                <p>{mediaGenre(movie.media_type)}</p>
+                {movie.release_date ? (
+                  <p className="date">{movie.release_date}</p>
+                ) : (
+                  <p className="date">{movie.first_air_date}</p>
+                )}
+              </div>
             </div>
-          </div>
-        </NavLink>
-      ))}
+          </NavLink>
+        ))}
     </div>
   );
 };

@@ -10,7 +10,7 @@ const CardsFamourfor = ({ movie }) => {
         />
       </div>
 
-      <p>{movie.title}</p>
+      <p>{movie.media_type === "movie" ? movie.title : movie.name}</p>
     </div>
   );
 };

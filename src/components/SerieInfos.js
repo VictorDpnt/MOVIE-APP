@@ -4,6 +4,7 @@ import Navbar from "./Navbar";
 import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import SimilarSerie from "./SimilarSerie";
+import CreditSerie from "./CreditSerie";
 
 const SerieInfos = () => {
   const [data, setData] = useState([]);
@@ -23,7 +24,7 @@ const SerieInfos = () => {
         `https://api.themoviedb.org/3/tv/${id}?api_key=864b6602f4018630491e67fa714381e6&language=fr-FR`
       )
       .then((res) => setData(res.data));
-  }, [data, idUrl]);
+  }, [data, idUrl, id]);
 
   const genreFinder = (genre) => {
     switch (genre) {
@@ -132,6 +133,7 @@ const SerieInfos = () => {
           </div>
         </div>
       </div>
+      <CreditSerie movieId={data.id} />
       <SimilarSerie movieId={data.id} />
     </div>
   );

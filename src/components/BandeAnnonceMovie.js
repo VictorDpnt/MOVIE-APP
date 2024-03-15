@@ -16,9 +16,18 @@ const BandeAnnonceMovie = ({ movieId }) => {
       .then((res) => setData(res.data.results[1]));
   }, [data, idMovie]);
   return (
-    <Link to={`https://www.youtube.com/watch?v=${data.key}`} target="_blank">
-      Bande-annonce
-    </Link>
+    <div>
+      {data.key && (
+        <Link
+          to={`https://www.youtube.com/watch?v=${data.key}`}
+          target="_blank"
+        >
+          <div className="bandeAnnonce-movie">
+            <p>Bande-annonce</p>
+          </div>
+        </Link>
+      )}
+    </div>
   );
 };
 

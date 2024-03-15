@@ -4,10 +4,37 @@ import "react-circular-progressbar/dist/styles.css";
 
 const CardsSeries = ({ movie }) => {
   const notation = Math.floor(movie.vote_average * 10);
-  // const dateFormateur = (date) => {
-  //   let [yy, mm, dd] = date.split("-");
-  //   return [dd, mm, yy].join("-");
-  // };
+
+  function convertDate(dateString) {
+    var months = [
+      "janvier",
+      "février",
+      "mars",
+      "avril",
+      "mai",
+      "juin",
+      "juillet",
+      "août",
+      "septembre",
+      "octobre",
+      "novembre",
+      "décembre",
+    ];
+
+    var date = new Date(dateString);
+
+    var day = date.getDate();
+    var monthIndex = date.getMonth();
+    var year = date.getFullYear();
+
+    if (day < 10) {
+      day = "0" + day;
+    }
+
+    var formattedDate = day + " " + months[monthIndex] + " " + year;
+
+    return formattedDate;
+  }
 
   return (
     <div className="card-container">
@@ -22,7 +49,7 @@ const CardsSeries = ({ movie }) => {
           <CircularProgressbar value={notation} text={`${notation}%`} />
         </div>
         <h1 className="movie-title">{movie.name}</h1>
-        <h5 className="date">{movie.first_air_date}</h5>
+        <h5 className="date">{convertDate(movie.first_air_date)}</h5>
       </div>
     </div>
   );
