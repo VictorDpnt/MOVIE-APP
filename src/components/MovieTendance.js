@@ -9,7 +9,7 @@ const MovieTendance = () => {
   useEffect(() => {
     axios
       .get(
-        "https://api.themoviedb.org/3/discover/movie?api_key=864b6602f4018630491e67fa714381e6&page=1&language=fr-FR"
+        "https://api.themoviedb.org/3/trending/movie/day?api_key=864b6602f4018630491e67fa714381e6&language=fr-FR"
       )
       .then((res) => setMovieTendance(res.data.results));
   }, [movieTendance]);
@@ -27,6 +27,13 @@ const MovieTendance = () => {
               movie.original_language === "fr" ||
               movie.original_language === "ko"
             ) {
+              return movie;
+            } else {
+              return null;
+            }
+          })
+          .filter((movie) => {
+            if (movie.media_type === "movie") {
               return movie;
             } else {
               return null;

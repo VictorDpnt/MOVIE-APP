@@ -5,6 +5,8 @@ import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import SimilarMovie from "./SimilarMovie";
 import BandeAnnonceMovie from "./BandeAnnonceMovie";
+import CreditMovie from "./CreditMovie";
+import CrewInfos from "./CrewInfos";
 
 const MovieInfos = () => {
   const [data, setData] = useState([]);
@@ -185,9 +187,11 @@ const MovieInfos = () => {
                 </div>
               ) : null}
             </div>
+            <CrewInfos id={data.id} />
           </div>
         </div>
       </div>
+      <CreditMovie movieId={data.id} />
       <SimilarMovie movieId={data.id} />
     </div>
   );

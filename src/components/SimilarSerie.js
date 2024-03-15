@@ -42,6 +42,9 @@ const SimilarSerie = ({ movieId }) => {
               return null;
             }
           })
+          .filter((item, index) => {
+            return index === data.findIndex((item2) => item2.id === item.id);
+          })
           .map((movie, index) => (
             <NavLink to={`/SeriesPopulaires/${movie.id}`}>
               <CardsSeries key={index} movie={movie} />

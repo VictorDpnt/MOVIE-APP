@@ -42,10 +42,15 @@ const ActorsInfos = () => {
         </div>
         <div className="right-part">
           <h1 className="name">{data.name}</h1>
-          <div className="bio">
-            <h5>Biographie</h5>
-            <p>{data.biography}</p>
-          </div>
+          {data.biography ? (
+            <div className="bio">
+              <h5>Biographie</h5>
+              <p>{data.biography}</p>
+            </div>
+          ) : (
+            "Pas de biographie disponible "
+          )}
+
           <ActorsCrédits />
         </div>
       </div>

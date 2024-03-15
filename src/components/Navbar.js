@@ -10,12 +10,14 @@ const Navbar = () => {
   const [inputSearch, setInputSearch] = useState("");
 
   return (
-    <div className="nav-container">
+    <div
+      className="nav-container"
+      onMouseOver={() => setShowWindowSearch(true)}
+    >
       <div className="navbar">
         <div className="nav-left">
           <NavLink to="/">
             <div className="logo"></div>
-            {/* <img src="./img/logo.png" alt="" className="logo" /> */}
           </NavLink>
 
           <ul
@@ -37,7 +39,7 @@ const Navbar = () => {
                 <li>Populaire</li>
               </NavLink>
               <NavLink to="/Avenir">
-                <li>À venir</li>
+                <li>Sortie récemment</li>
               </NavLink>
               <NavLink to="/LesMieuxNotés">
                 <li>Les mieux notés</li>
@@ -64,9 +66,9 @@ const Navbar = () => {
               onMouseLeave={() => setShowSerie(false)}
             >
               <NavLink to="/SeriesPopulaires">
-                <li>Populaire</li>
+                <li>Du moment</li>
               </NavLink>
-              <NavLink to="/SeriesPopulaires">
+              <NavLink to="/SeriesLesMieuxNotees">
                 <li>Les mieux notées</li>
               </NavLink>
             </div>
@@ -88,7 +90,7 @@ const Navbar = () => {
               onMouseLeave={() => setShowArtiste(false)}
             >
               <NavLink to="/ArtistesPopulaires">
-                <li>Populaire</li>
+                <li>Populaires</li>
               </NavLink>
             </div>
           </ul>
@@ -116,7 +118,9 @@ const Navbar = () => {
       {showWindowSearch && (
         <div
           className="search-window"
-          onMouseLeave={() => setShowWindowSearch(false)}
+          onMouseLeave={() => {
+            setShowWindowSearch(false);
+          }}
         >
           <SearchWindow inputSearch={inputSearch} />
         </div>
