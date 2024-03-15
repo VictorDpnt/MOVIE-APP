@@ -168,7 +168,8 @@
   .similar-movies-container {
     display: flex;
     align-items: flex-start;
-    overflow-y: scroll;
+    overflow-x: scroll;
+    overflow-y: hidden;
     width: 80%;
     padding: 5px;
 
