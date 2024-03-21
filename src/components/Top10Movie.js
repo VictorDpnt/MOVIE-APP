@@ -15,7 +15,7 @@ const Top10Movie = () => {
   return (
     <div className="top10">
       <div className="movieContainer">
-        {data.slice(0, 9).map((movie, index) => (
+        {data.slice(0, 10).map((movie, index) => (
           <NavLink to={`/${movie.id}`}>
             <div className="card-top10">
               <div className="img">

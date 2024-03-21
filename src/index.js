@@ -8,7 +8,7 @@ import rootReducer from "./reduceurs";
 
 const store = configureStore({
   reducer: rootReducer,
-  devTools: true,
+  devTools: false,
 });
 
 const root = ReactDOM.createRoot(document.getElementById("root"));

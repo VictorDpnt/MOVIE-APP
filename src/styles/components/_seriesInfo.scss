@@ -1,0 +1,22 @@
+.main-infos {
+  margin-top: 64px;
+  .notation-ba-providers {
+    margin: 15px 0;
+    display: flex;
+    width: 55%;
+    justify-content: space-between;
+    align-items: center;
+
+    .offers-providers {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+
+      img {
+        width: 30px;
+        height: 30px;
+      }
+    }
+  }
+}

@@ -1,14 +1,70 @@
 .popular-container {
   display: grid;
   grid-template-columns: 20% 80%;
-  margin-top: 30px;
+  margin-top: 80px;
   margin-bottom: 40px;
+  @media screen and (max-width: 800px) {
+    display: flex;
+    flex-direction: column;
+  }
 
   .cards-container {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     margin-top: 20px;
     justify-items: center;
+
+    @media screen and (max-width: 800px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    @media screen and (max-width: 500px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .card-container {
+      margin-bottom: 20px;
+      transition: 0.2s;
+
+      &:hover {
+        scale: 1.05;
+      }
+    }
+  }
+}
+
+.popular-container.pop {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-left: 10px;
+  @media screen and (max-width: 500px) {
+    margin-left: 0;
+    align-items: stretch;
+  }
+
+  .title-page {
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+    @media screen and (max-width: 500px) {
+      text-align: center;
+    }
+  }
+  .cards-container {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    margin-top: 20px;
+    justify-items: center;
+
+    @media screen and (max-width: 1025px) {
+      grid-template-columns: repeat(4, 1fr);
+    }
+    @media screen and (max-width: 800px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    @media screen and (max-width: 500px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
 
     .card-container {
       margin-bottom: 20px;

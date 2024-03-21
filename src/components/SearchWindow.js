@@ -17,6 +17,15 @@ const SearchWindow = ({ inputSearch }) => {
     return genreMedia;
   };
 
+  function formatDate(dateString) {
+    const date = new Date(dateString);
+    const day = date.getDate().toString().padStart(2, "0");
+    const month = (date.getMonth() + 1).toString().padStart(2, "0");
+    const year = date.getFullYear().toString().slice(-2);
+
+    return `${day}-${month}-${year}`;
+  }
+
   useEffect(() => {
     axios
       .get(
@@ -47,14 +56,14 @@ const SearchWindow = ({ inputSearch }) => {
                   ? movie.name
                   : movie.original_name}
               </li>
-              {/* <li>{movie.title ? movie.title : movie.name}</li> */}
+
               <div className="details-search">
                 <p>{mediaGenre(movie.media_type)}</p>
                 {movie.release_date ? (
-                  <p className="date">{movie.release_date}</p>
-                ) : (
-                  <p className="date">{movie.first_air_date}</p>
-                )}
+                  <p className="date">{formatDate(movie.release_date)}</p>
+                ) : movie.first_air_date ? (
+                  <p className="date">{formatDate(movie.first_air_date)}</p>
+                ) : null}
               </div>
             </div>
           </NavLink>

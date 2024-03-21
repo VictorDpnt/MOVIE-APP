@@ -5,7 +5,11 @@ const CardsActors = ({ actor }) => {
     <div className="card-container-actors">
       <div className="img-profile">
         <img
-          src={"https://image.tmdb.org/t/p/original" + actor.profile_path}
+          src={
+            actor.profile_path
+              ? "https://image.tmdb.org/t/p/original" + actor.profile_path
+              : "./img/noimg.jpeg"
+          }
           alt=""
         />
       </div>

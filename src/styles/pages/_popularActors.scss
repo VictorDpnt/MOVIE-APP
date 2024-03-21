@@ -1,7 +1,7 @@
 .popular-container-actors {
   display: flex;
   justify-content: center;
-  margin-top: 30px;
+  margin-top: 80px;
   margin-bottom: 40px;
 
   .cards-container-actors {
@@ -11,6 +11,16 @@
     justify-content: center;
     margin-top: 20px;
     justify-items: center;
+
+    @media screen and (max-width: 1050px) {
+      grid-template-columns: repeat(4, 1fr);
+    }
+    @media screen and (max-width: 1050px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    @media screen and (max-width: 500px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
 
     .card-container-actors {
       margin-bottom: 20px;

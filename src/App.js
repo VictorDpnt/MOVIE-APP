@@ -11,6 +11,9 @@ import SeriesPopulaire from "./pages/Series/SeriesPopulaire";
 import MovieInfos from "./components/MovieInfos";
 import SerieInfos from "./components/SerieInfos";
 import ActorsInfos from "./components/ActorsInfos";
+import AllSeries from "./pages/Series/AllSeries";
+import MaListe from "./components/MaListe";
+import MaListeSérie from "./components/MaListeSérie";
 
 const App = () => {
   return (
@@ -27,9 +30,12 @@ const App = () => {
           element={<SeriesLesMieuxNotees />}
         />
         <Route path="/SeriesPopulaires" exact element={<SeriesPopulaire />} />
+        <Route path="/AllSeries" exact element={<AllSeries />} />
         <Route path="/:id" element={<MovieInfos />} />
         <Route path="/SeriesPopulaires/:id" element={<SerieInfos />} />
         <Route path="/ActeursPopulaires/:id" element={<ActorsInfos />} />
+        <Route path="/MaListe" element={<MaListe />} />
+        <Route path="/MaListeSeries" element={<MaListeSérie />} />
         <Route path="*" element={<Acceuil />} />
       </Routes>
     </BrowserRouter>

@@ -20,6 +20,37 @@ const ActorsInfos = () => {
       .then((res) => setData(res.data));
   }, [id]);
 
+  function convertDate(dateString) {
+    var months = [
+      "janvier",
+      "février",
+      "mars",
+      "avril",
+      "mai",
+      "juin",
+      "juillet",
+      "août",
+      "septembre",
+      "octobre",
+      "novembre",
+      "décembre",
+    ];
+
+    var date = new Date(dateString);
+
+    var day = date.getDate();
+    var monthIndex = date.getMonth();
+    var year = date.getFullYear();
+
+    if (day < 10) {
+      day = "0" + day;
+    }
+
+    var formattedDate = day + " " + months[monthIndex] + " " + year;
+
+    return formattedDate;
+  }
+
   return (
     <div className="actors-infos-container">
       <Navbar />
@@ -32,7 +63,7 @@ const ActorsInfos = () => {
           <div className="info-perso">
             <div className="dob">
               <h6>Date de naissance</h6>
-              <p>{data.birthday}</p>
+              <p>{convertDate(data.birthday)}</p>
             </div>
             <div className="pob">
               <h6>Lieu de naissance</h6>
