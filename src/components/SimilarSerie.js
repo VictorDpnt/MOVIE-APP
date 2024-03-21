@@ -20,21 +20,12 @@ const SimilarSerie = ({ movieId }) => {
 
     getData();
   }, [data, idMovie]);
+
   return (
     <div className="similar">
-      <h4>Titres similaires</h4>
+      {data.length > 0 ? <h4>Titres similaires</h4> : null}
       <div className="similar-movies-container">
         {data
-          .filter((movie) => {
-            if (
-              movie.original_language === "en" ||
-              movie.original_language === "fr"
-            ) {
-              return movie;
-            } else {
-              return null;
-            }
-          })
           .filter((movie) => {
             if (movie.poster_path) {
               return movie;

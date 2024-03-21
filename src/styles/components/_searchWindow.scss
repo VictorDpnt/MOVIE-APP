@@ -2,8 +2,13 @@
   z-index: 1000;
   position: absolute;
   width: 100%;
-  height: fit-content;
+  height: 70vh;
   background: whitesmoke;
+  overflow-y: scroll;
+
+  @media screen and (max-width: 500px) {
+    width: 100vw;
+  }
 
   .window-containt {
     .input-search-window {
@@ -17,6 +22,10 @@
       display: grid;
       grid-template-columns: 40% 60%;
 
+      @media screen and (max-width: 500px) {
+        grid-template-columns: 55% 45%;
+      }
+
       &:hover {
         background: #e3e3e3;
       }
@@ -28,6 +37,15 @@
         color: black;
         position: relative;
 
+        @media screen and (max-width: 800px) {
+          font-size: 0.8rem;
+        }
+
+        @media screen and (max-width: 500px) {
+          padding: 0;
+          padding-left: 15px;
+        }
+
         &::before {
           content: "";
           background: url("../../../public/img/loupe.svg");
@@ -37,6 +55,14 @@
           left: 25%;
           top: 3px;
           filter: invert(50);
+
+          @media screen and (max-width: 800px) {
+            width: 10px;
+            height: 10px;
+          }
+          @media screen and (max-width: 500px) {
+            display: none;
+          }
         }
       }
 
@@ -46,6 +72,12 @@
         display: flex;
         justify-content: flex-start;
         align-items: center;
+        @media screen and (max-width: 800px) {
+          font-size: 0.8rem;
+        }
+        @media screen and (max-width: 500px) {
+          margin-left: 30px;
+        }
 
         p {
           color: black;

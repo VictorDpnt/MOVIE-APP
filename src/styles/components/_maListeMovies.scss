@@ -1,0 +1,23 @@
+.fav-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 70px;
+  h2 {
+    width: 100%;
+    text-align: center;
+    margin: 20px 0;
+  }
+  .catalogue {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    .card-container {
+      transition: 0.3s;
+      margin-top: 20px;
+      &:hover {
+        scale: 1.05;
+      }
+    }
+  }
+}

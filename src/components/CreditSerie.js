@@ -17,7 +17,7 @@ const CreditSerie = ({ movieId }) => {
   }, [movieId, data]);
   return (
     <div className="credit-container">
-      <h4>Têtes d'affiche</h4>
+      {data.length > 0 ? <h4>Têtes d'affiche</h4> : null}
       <div className="credit-items">
         {data
           .filter((movie) => {

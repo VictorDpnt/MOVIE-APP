@@ -7,12 +7,8 @@ import InfiniteScroll from "react-infinite-scroll-component";
 
 const ArtistesPopulaires = () => {
   const [data, setData] = useState([]);
-  const [showPop, setShowPop] = useState(false);
-  const [showRate, setShowRate] = useState(false);
-  const [showDate, setShowDate] = useState(false);
-  const [sortChoice, setChoiceSort] = useState();
+
   const [pageNumber, setPageNumber] = useState(1);
-  const [showMore, setShowMore] = useState(false);
 
   useEffect(() => {
     axios

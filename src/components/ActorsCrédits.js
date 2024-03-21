@@ -63,6 +63,7 @@ const ActorsCrédits = () => {
               return null;
             }
           })
+          .sort((a, b) => b.popularity - a.popularity)
           .filter((movie) => {
             if (movie.poster_path) {
               return movie;
@@ -82,7 +83,8 @@ const ActorsCrédits = () => {
               return movie;
             }
           })
-          .sort((a, b) => b.popularity - a.popularity)
+
+          .sort((a, b) => b.vote_count - a.vote_count)
           .map((movie, index) => (
             <NavLink to={`/SeriesPopulaires/${movie.id}`}>
               <CardsFamourfor key={index} movie={movie} />

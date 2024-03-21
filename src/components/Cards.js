@@ -46,13 +46,45 @@ const Cards = ({ movie }) => {
     <div className="card-container">
       <div className="img">
         <img
-          src={"https://image.tmdb.org/t/p/original" + movie.poster_path}
+          src={
+            movie.poster_path
+              ? "https://image.tmdb.org/t/p/original" + movie.poster_path
+              : "./img/noimg.jpeg"
+          }
           alt=""
         />
       </div>
       <div className="infos">
-        <div className="notation" style={{ width: 35, height: 35 }}>
-          <CircularProgressbar value={notation} text={`${notation}%`} />
+        <div
+          className="notation"
+          style={{ width: 35, height: 35 }}
+          background={"#141414"}
+        >
+          <CircularProgressbar
+            value={notation}
+            text={`${notation}%`}
+            strokeWidth={15}
+            background={"#141414"}
+            styles={{
+              root: { width: "100%" },
+              path: {
+                stroke:
+                  notation > 66
+                    ? "#1ABC9C"
+                    : notation > 33
+                    ? "#F39C12"
+                    : "#E74C3C",
+              },
+              trail: {
+                stroke: "#141414",
+              },
+              text: {
+                fill: "#141414",
+                fontSize: "30px",
+                fontWeight: "bold",
+              },
+            }}
+          />
         </div>
         <h1 className="movie-title">{movie.title}</h1>
         <h5 className="date">{convertDate(movie.release_date)}</h5>

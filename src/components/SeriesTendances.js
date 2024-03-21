@@ -16,7 +16,7 @@ const SeriesTendances = () => {
   return (
     <div className="movie-tendance-container">
       <div className="choice">
-        <p className="title-component"> Séries du moment</p>
+        {/* <p className="title-component"> Séries du moment</p> */}
       </div>
 
       <div className="movie-tendance-cards">

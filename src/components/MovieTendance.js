@@ -12,7 +12,8 @@ const MovieTendance = () => {
         "https://api.themoviedb.org/3/trending/movie/day?api_key=864b6602f4018630491e67fa714381e6&language=fr-FR"
       )
       .then((res) => setMovieTendance(res.data.results));
-  }, [movieTendance]);
+  }, []);
+
   return (
     <div className="movie-tendance-container">
       <div className="choice">

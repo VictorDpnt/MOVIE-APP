@@ -1,0 +1,151 @@
+.carousel-genre {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .carousel-container2 {
+    position: relative;
+    width: 80%;
+    height: 50vh;
+    overflow: hidden;
+    border-radius: 5px;
+    margin-bottom: 50px;
+
+    .slide {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      background-color: #f0f0f0;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: top;
+      }
+
+      .infos-carousel {
+        width: 100%;
+        height: 100%;
+        text-shadow: 1px 1px 2px black;
+        z-index: 50;
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        @media screen and (max-width: 500px) {
+          height: fit-content;
+        }
+
+        .title-genre {
+          position: absolute;
+          top: 5%;
+          left: 5%;
+          width: 50%;
+          @media screen and (max-width: 400px) {
+            left: 15%;
+          }
+
+          .title {
+            letter-spacing: 2px;
+            font-size: 2.3rem;
+            @media screen and (max-width: 500px) {
+              font-size: 1rem;
+            }
+          }
+          .genre-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            .genre {
+              text-transform: capitalize;
+              margin: 5px;
+              font-weight: 300;
+              font-size: 0.8rem;
+              background-color: rgba(192, 192, 192, 0.209);
+              border-radius: 5px;
+              padding: 3px;
+              @media screen and (max-width: 500px) {
+                font-size: 0.5rem;
+              }
+            }
+          }
+        }
+
+        .more-infos {
+          position: absolute;
+          top: 20px;
+          right: 30px;
+          font-size: 2rem;
+          color: #f0f0f0;
+          transition: 0.2s;
+
+          @media screen and (max-width: 400px) {
+            font-size: 1rem;
+          }
+
+          &:hover {
+            scale: 1.1;
+          }
+        }
+      }
+    }
+
+    .indicators {
+      z-index: 2;
+      position: absolute;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      .indicator {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background-color: #cccccc;
+        margin: 0 5px;
+        cursor: pointer;
+
+        &.active {
+          background-color: #333;
+        }
+      }
+    }
+
+    button {
+      z-index: 100;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: rgba(0, 0, 0, 0.5);
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+
+      &:hover {
+        background-color: rgba(0, 0, 0, 0.7);
+      }
+
+      &.prev {
+        left: 20px;
+      }
+
+      &.next {
+        right: 20px;
+      }
+    }
+  }
+}
