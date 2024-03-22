@@ -5,6 +5,7 @@ import { NavLink } from "react-router-dom";
 
 const MovieGenre = ({ genre }) => {
   const [movieTendance, setMovieTendance] = useState([]);
+  const [scrollPosition, setScrollPosition] = useState(0);
 
   useEffect(() => {
     axios
@@ -13,13 +14,25 @@ const MovieGenre = ({ genre }) => {
       )
       .then((res) => setMovieTendance(res.data.results));
   }, [movieTendance]);
+
+  const handleScroll = (direction) => {
+    const container = document.getElementById(`${genre}`);
+    const scrollAmount = 200;
+    if (direction === "left") {
+      container.scrollLeft -= scrollAmount;
+      setScrollPosition(container.scrollLeft);
+    } else {
+      container.scrollLeft += scrollAmount;
+      setScrollPosition(container.scrollLeft);
+    }
+  };
   return (
     <div className="movie-tendance-container">
       <div className="choice">
         {/* <p className="title-component"> Films en tendances</p> */}
       </div>
 
-      <div className="movie-tendance-cards">
+      <div className="movie-tendance-cards" id={genre}>
         {movieTendance
           .filter((movie) => {
             if (
@@ -32,19 +45,18 @@ const MovieGenre = ({ genre }) => {
               return null;
             }
           })
-          // .filter((movie) => {
-          //   if (movie.media_type === "movie") {
-          //     return movie;
-          //   } else {
-          //     return null;
-          //   }
-          // })
           .map((movie, index) => (
             <NavLink to={`/${movie.id}`}>
               <Cards key={index} movie={movie} />
             </NavLink>
           ))}
       </div>
+      <button className="prev" onClick={() => handleScroll("left")}>
+        <i className="fa-solid fa-angle-left"></i>
+      </button>
+      <button className="next" onClick={() => handleScroll("right")}>
+        <i className="fa-solid fa-angle-right"></i>
+      </button>
     </div>
   );
 };

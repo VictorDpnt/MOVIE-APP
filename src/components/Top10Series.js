@@ -4,6 +4,7 @@ import { NavLink } from "react-router-dom";
 
 const Top10Series = () => {
   const [data, setData] = useState([]);
+  const [scrollPosition, setScrollPosition] = useState(0);
 
   useEffect(() => {
     axios
@@ -12,34 +13,43 @@ const Top10Series = () => {
       )
       .then((res) => setData(res.data.results));
   }, []);
+
+  const handleScroll = (direction) => {
+    const container = document.getElementById("movieContainer");
+    const scrollAmount = 200;
+    if (direction === "left") {
+      container.scrollLeft -= scrollAmount;
+      setScrollPosition(container.scrollLeft);
+    } else {
+      container.scrollLeft += scrollAmount;
+      setScrollPosition(container.scrollLeft);
+    }
+  };
   return (
     <div className="top10">
-      <div className="movieContainer">
-        {data
-          .slice(0, 10)
-          // .filter((movie) => {
-          //   if (movie.origin_country[0] === "US") {
-          //     return movie;
-          //   } else {
-          //     return null;
-          //   }
-          // })
-          .map((movie, index) => (
-            <NavLink to={`/SeriesPopulaires/${movie.id}`}>
-              <div className="card-top10">
-                <div className="img">
-                  <img
-                    src={
-                      "https://image.tmdb.org/t/p/original" + movie.poster_path
-                    }
-                    alt=""
-                  />
-                  <p>{index + 1}</p>
-                </div>
+      <div className="movieContainer" id="movieContainer">
+        {data.slice(0, 10).map((movie, index) => (
+          <NavLink to={`/SeriesPopulaires/${movie.id}`}>
+            <div className="card-top10">
+              <div className="img">
+                <img
+                  src={
+                    "https://image.tmdb.org/t/p/original" + movie.poster_path
+                  }
+                  alt=""
+                />
+                <p>{index + 1}</p>
               </div>
-            </NavLink>
-          ))}
+            </div>
+          </NavLink>
+        ))}
       </div>
+      <button className="prev" onClick={() => handleScroll("left")}>
+        <i className="fa-solid fa-angle-left"></i>
+      </button>
+      <button className="next" onClick={() => handleScroll("right")}>
+        <i className="fa-solid fa-angle-right"></i>
+      </button>
     </div>
   );
 };

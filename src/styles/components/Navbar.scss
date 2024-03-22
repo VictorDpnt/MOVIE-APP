@@ -19,6 +19,7 @@
       align-items: center;
       justify-content: space-around;
       width: 50%;
+      margin-left: 20px;
 
       @media screen and (max-width: 950px) {
         width: 60%;
@@ -66,6 +67,9 @@
         font-size: medium;
         cursor: pointer;
         z-index: 1000;
+        display: flex;
+
+        // align-items: center;
 
         @media only screen and (max-width: 850px) {
           margin-right: 10px;
@@ -74,15 +78,11 @@
           display: none;
         }
 
-        &:after {
-          content: "⌄";
-          width: 10px;
-          margin-left: 5px;
-          position: absolute;
-          transform: translateY(-4px);
+        .arrow-down {
+          width: 15px;
 
           @media screen and (max-width: 1050px) {
-            content: "";
+            display: none;
           }
         }
 
@@ -93,7 +93,7 @@
           background: $colorBackground;
           border-radius: 5px;
           border: grey 0.6px solid;
-          transform: translateY(10px);
+          transform: translateY(35px);
           font-size: medium;
           width: fit-content;
           overflow-x: hidden;
@@ -144,8 +144,8 @@
           width: 200px;
           opacity: 1;
 
-          @media only screen and (max-width: 750px) {
-            width: 100px;
+          @media only screen and (max-width: 770px) {
+            width: 120px;
             font-size: 0.6rem;
           }
 

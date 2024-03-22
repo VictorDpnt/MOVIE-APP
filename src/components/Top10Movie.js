@@ -4,6 +4,7 @@ import { NavLink } from "react-router-dom";
 
 const Top10Movie = () => {
   const [data, setData] = useState([]);
+  const [scrollPosition, setScrollPosition] = useState(0);
 
   useEffect(() => {
     axios
@@ -12,6 +13,18 @@ const Top10Movie = () => {
       )
       .then((res) => setData(res.data.results));
   }, []);
+
+  const handleScroll = (direction) => {
+    const container = document.querySelector(".movieContainer");
+    const scrollAmount = 200;
+    if (direction === "left") {
+      container.scrollLeft -= scrollAmount;
+      setScrollPosition(container.scrollLeft);
+    } else {
+      container.scrollLeft += scrollAmount;
+      setScrollPosition(container.scrollLeft);
+    }
+  };
   return (
     <div className="top10">
       <div className="movieContainer">
@@ -31,6 +44,12 @@ const Top10Movie = () => {
           </NavLink>
         ))}
       </div>
+      <button className="prev" onClick={() => handleScroll("left")}>
+        <i className="fa-solid fa-angle-left"></i>
+      </button>
+      <button className="next" onClick={() => handleScroll("right")}>
+        <i className="fa-solid fa-angle-right"></i>
+      </button>
     </div>
   );
 };

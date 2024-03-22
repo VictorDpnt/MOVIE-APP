@@ -54,6 +54,7 @@ const Navbar = () => {
                 <li>Du moment</li>
               </NavLink>
             </div>
+            <img src="./img/arrow-down.png" alt="" className="arrow-down" />
           </ul>
 
           <ul
@@ -82,6 +83,7 @@ const Navbar = () => {
                 <li>Les mieux notées</li>
               </NavLink>
             </div>
+            <img src="./img/arrow-down.png" alt="" className="arrow-down" />
           </ul>
 
           <ul
@@ -104,6 +106,7 @@ const Navbar = () => {
                 <li>Populaires</li>
               </NavLink>
             </div>
+            <img src="./img/arrow-down.png" alt="" className="arrow-down" />
           </ul>
 
           <ul
@@ -129,6 +132,7 @@ const Navbar = () => {
                 <li>Séries</li>
               </NavLink>
             </div>
+            <img src="./img/arrow-down.png" alt="" className="arrow-down" />
           </ul>
         </div>
 
