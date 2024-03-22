@@ -5,6 +5,7 @@ import { NavLink } from "react-router-dom";
 
 const MovieTendance = () => {
   const [movieTendance, setMovieTendance] = useState([]);
+  const [scrollPosition, setScrollPosition] = useState(0);
 
   useEffect(() => {
     axios
@@ -13,6 +14,18 @@ const MovieTendance = () => {
       )
       .then((res) => setMovieTendance(res.data.results));
   }, []);
+
+  const handleScroll = (direction) => {
+    const container = document.querySelector(".movie-tendance-cards");
+    const scrollAmount = 200;
+    if (direction === "left") {
+      container.scrollLeft -= scrollAmount;
+      setScrollPosition(container.scrollLeft);
+    } else {
+      container.scrollLeft += scrollAmount;
+      setScrollPosition(container.scrollLeft);
+    }
+  };
 
   return (
     <div className="movie-tendance-container">
@@ -46,6 +59,12 @@ const MovieTendance = () => {
             </NavLink>
           ))}
       </div>
+      <button className="prev" onClick={() => handleScroll("left")}>
+        <i className="fa-solid fa-angle-left"></i>
+      </button>
+      <button className="next" onClick={() => handleScroll("right")}>
+        <i className="fa-solid fa-angle-right"></i>
+      </button>
     </div>
   );
 };

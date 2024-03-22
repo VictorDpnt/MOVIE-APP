@@ -5,6 +5,7 @@ import { NavLink } from "react-router-dom";
 
 const SeriesTendances = () => {
   const [data, setData] = useState([]);
+  const [scrollPosition, setScrollPosition] = useState(0);
 
   useEffect(() => {
     axios
@@ -13,13 +14,25 @@ const SeriesTendances = () => {
       )
       .then((res) => setData(res.data.results));
   }, [data]);
+
+  const handleScroll = (direction) => {
+    const container = document.getElementById("movie-tendance-cards");
+    const scrollAmount = 200;
+    if (direction === "left") {
+      container.scrollLeft -= scrollAmount;
+      setScrollPosition(container.scrollLeft);
+    } else {
+      container.scrollLeft += scrollAmount;
+      setScrollPosition(container.scrollLeft);
+    }
+  };
   return (
     <div className="movie-tendance-container">
       <div className="choice">
         {/* <p className="title-component"> Séries du moment</p> */}
       </div>
 
-      <div className="movie-tendance-cards">
+      <div className="movie-tendance-cards" id="movie-tendance-cards">
         {data
           .filter((movie) => {
             if (movie.media_type === "tv") {
@@ -34,6 +47,12 @@ const SeriesTendances = () => {
             </NavLink>
           ))}
       </div>
+      <button className="prev" onClick={() => handleScroll("left")}>
+        <i className="fa-solid fa-angle-left"></i>
+      </button>
+      <button className="next" onClick={() => handleScroll("right")}>
+        <i className="fa-solid fa-angle-right"></i>
+      </button>
     </div>
   );
 };
