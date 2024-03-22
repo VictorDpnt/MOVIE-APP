@@ -199,6 +199,10 @@
       &.next {
         right: 150px;
       }
+
+      @media screen and (max-width: 800px) {
+        display: none;
+      }
     }
   }
 
@@ -279,6 +283,10 @@
       &.next {
         right: 20px;
       }
+
+      @media screen and (max-width: 800px) {
+        display: none;
+      }
     }
   }
 
@@ -330,6 +338,10 @@
 
       &.next {
         right: 150px;
+      }
+
+      @media screen and (max-width: 800px) {
+        display: none;
       }
     }
   }
