@@ -47,6 +47,8 @@
       .title-carousel {
         letter-spacing: 2px;
         font-size: 3rem;
+        font-family: $font2;
+        width: 90%;
 
         @media screen and (max-width: 860px) {
           font-size: 2rem;

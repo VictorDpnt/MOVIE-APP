@@ -14,11 +14,9 @@ const SerieInfos = () => {
   const notation = Math.floor(data.vote_average * 10);
   const [showProvider, setShowPovider] = useState(false);
   const [checkStorage, setCheckStorage] = useState(false);
-  // const [region, setRegion] = useState("fr-FR");
 
   const isValueInLocalStorage = () => {
     const storedValue = localStorage.getItem("series");
-    // Vérifie si la valeur récupérée est non nulle et si elle contient la valeur à vérifier
     if (storedValue !== null && storedValue.includes(data.id)) {
       setCheckStorage(true);
     } else {
@@ -99,14 +97,6 @@ const SerieInfos = () => {
     return genre;
   };
 
-  // const getData = (date) => {
-  //   let datee = date.toString();
-  //   let newDate = datee.split("-");
-  //   let realDate = newDate[2] + "-" + newDate[1] + "-" + newDate[0];
-
-  //   return realDate;
-  // };
-
   const getData = (date) => {
     let datee = date.toString();
     let newDate = datee.split("-");
@@ -168,15 +158,22 @@ const SerieInfos = () => {
       <div className="main-infos">
         <div className="img-background">
           <img
-            src={"https://image.tmdb.org/t/p/original" + data.backdrop_path}
-            alt=""
+            src={
+              data.backdrop_path
+                ? "https://image.tmdb.org/t/p/original" + data.backdrop_path
+                : "./img/movie-clap.jpeg"
+            }
           />
         </div>
         <div className="infos-containt">
           <div className="img-movie">
             <img
-              src={"https://image.tmdb.org/t/p/original" + data.poster_path}
-              alt=""
+              src={
+                data.poster_path
+                  ? "https://image.tmdb.org/t/p/original" + data.poster_path
+                  : "./img/noimg.jpeg"
+              }
+              alt={data.title}
             />
           </div>
 

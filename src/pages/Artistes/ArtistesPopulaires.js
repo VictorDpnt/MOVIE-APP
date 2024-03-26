@@ -13,7 +13,7 @@ const ArtistesPopulaires = () => {
   useEffect(() => {
     axios
       .get(
-        `https://api.themoviedb.org/3/person/popular?api_key=864b6602f4018630491e67fa714381e6&page=${pageNumber}&language=fr-FR`
+        `https://api.themoviedb.org/3/person/popular?api_key=864b6602f4018630491e67fa714381e6&page=${pageNumber}&language=en-US`
       )
       .then((res) => setData(res.data.results));
   }, []);
@@ -23,7 +23,7 @@ const ArtistesPopulaires = () => {
 
     axios
       .get(
-        `https://api.themoviedb.org/3/person/popular?api_key=864b6602f4018630491e67fa714381e6&page=${pageNumber}&language=fr-FR`
+        `https://api.themoviedb.org/3/person/popular?api_key=864b6602f4018630491e67fa714381e6&page=${pageNumber}&language=en-US`
       )
       .then((res) => setData(data.concat(res.data.results)));
   };

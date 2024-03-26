@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import SearchWindow from "./SearchWindow";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCaretDown } from "@fortawesome/free-solid-svg-icons";
 
 const Navbar = () => {
   const [showMovie, setShowMovie] = useState(false);
@@ -54,7 +56,10 @@ const Navbar = () => {
                 <li>Du moment</li>
               </NavLink>
             </div>
-            <img src="./img/arrow-down.png" alt="" className="arrow-down" />
+            <FontAwesomeIcon
+              icon={faCaretDown}
+              className={showMovie ? "arrow-down active" : "arrow-down"}
+            />
           </ul>
 
           <ul
@@ -83,7 +88,10 @@ const Navbar = () => {
                 <li>Les mieux notées</li>
               </NavLink>
             </div>
-            <img src="./img/arrow-down.png" alt="" className="arrow-down" />
+            <FontAwesomeIcon
+              icon={faCaretDown}
+              className={showSerie ? "arrow-down active" : "arrow-down"}
+            />
           </ul>
 
           <ul
@@ -106,7 +114,10 @@ const Navbar = () => {
                 <li>Populaires</li>
               </NavLink>
             </div>
-            <img src="./img/arrow-down.png" alt="" className="arrow-down" />
+            <FontAwesomeIcon
+              icon={faCaretDown}
+              className={showArtiste ? "arrow-down active" : "arrow-down"}
+            />
           </ul>
 
           <ul
@@ -132,7 +143,10 @@ const Navbar = () => {
                 <li>Séries</li>
               </NavLink>
             </div>
-            <img src="./img/arrow-down.png" alt="" className="arrow-down" />
+            <FontAwesomeIcon
+              icon={faCaretDown}
+              className={showFav ? "arrow-down active" : "arrow-down"}
+            />
           </ul>
         </div>
 

@@ -2,7 +2,7 @@
   position: fixed;
   width: 100%;
   z-index: 1000;
-  background-color: $colorNavBar;
+  background-color: #022541;
   top: 0px;
   transition: 0.2s;
 
@@ -79,8 +79,13 @@
         }
 
         .arrow-down {
-          width: 15px;
+          margin-left: 4px;
+          margin-top: 4px;
+          transition: 0.2s;
 
+          &.active {
+            transform: rotate(180deg);
+          }
           @media screen and (max-width: 1050px) {
             display: none;
           }

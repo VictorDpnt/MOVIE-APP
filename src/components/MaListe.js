@@ -41,7 +41,7 @@ const MaListe = () => {
               </NavLink>
             ))
         ) : (
-          <h2> Aucun film à votre list</h2>
+          <h2> Aucun film à votre liste</h2>
         )}
       </ul>
     </div>

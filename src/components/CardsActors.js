@@ -18,8 +18,9 @@ const CardsActors = ({ actor }) => {
         {actor.known_for && (
           <div className="know-for-container">
             <h6 className="know-for">
-              {actor.known_for[0].title} {actor.known_for[0].title ? "," : null}{" "}
-              {actor.known_for[1].title} ,{actor.known_for[2].title}
+              {actor.known_for[0] && actor.known_for[0].title}
+              {actor.known_for[1] ? ", " : null}
+              {actor.known_for[1] && actor.known_for[1].title}
             </h6>
           </div>
         )}

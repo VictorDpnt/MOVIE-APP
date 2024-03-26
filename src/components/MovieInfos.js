@@ -82,7 +82,7 @@ const MovieInfos = () => {
         genre = "Romance";
         break;
       case 878:
-        genre = "Science Fiction";
+        genre = "Science-Fiction";
         break;
       case 10770:
         genre = "TV Show";
@@ -168,15 +168,22 @@ const MovieInfos = () => {
       <div className="main-infos">
         <div className="img-background">
           <img
-            src={"https://image.tmdb.org/t/p/original" + data.backdrop_path}
-            alt=""
+            src={
+              data.backdrop_path
+                ? "https://image.tmdb.org/t/p/original" + data.backdrop_path
+                : "./img/movie-clap.jpeg"
+            }
           />
         </div>
         <div className="infos-containt">
           <div className="img-movie">
             <img
-              src={"https://image.tmdb.org/t/p/original" + data.poster_path}
-              alt=""
+              src={
+                data.poster_path
+                  ? "https://image.tmdb.org/t/p/original" + data.poster_path
+                  : "./img/noimg.jpeg"
+              }
+              alt={data.title}
             />
           </div>
 

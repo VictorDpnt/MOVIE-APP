@@ -241,7 +241,7 @@ const Acceuil = () => {
           <InfiniteScroll
             dataLength={data.length}
             next={fetchData}
-            hasMore={showMore}
+            hasMore={true}
             loader={<h4>Loading...</h4>}
           ></InfiniteScroll>
         </div>

@@ -17,7 +17,7 @@ const AllSeries = () => {
   const dataGenreArray = [
     {
       id: 10759,
-      name: "Action & Adventure",
+      name: "Action / Aventure",
     },
     {
       id: 16,
@@ -61,7 +61,7 @@ const AllSeries = () => {
     },
     {
       id: 10765,
-      name: "Science-Fiction & Fantastique",
+      name: "Science-Fiction",
     },
     {
       id: 10766,
@@ -222,7 +222,7 @@ const AllSeries = () => {
           <InfiniteScroll
             dataLength={data.length}
             next={fetchData}
-            hasMore={showMore}
+            hasMore={true}
             loader={<h4>Loading...</h4>}
           ></InfiniteScroll>
         </div>
