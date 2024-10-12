@@ -1,4 +1,9 @@
 .acceuil {
+  .progressBar {
+    z-index: 1000;
+    position: absolute;
+    top: 30%;
+  }
   .top10title {
     margin-top: -10px;
     font-size: 25px;

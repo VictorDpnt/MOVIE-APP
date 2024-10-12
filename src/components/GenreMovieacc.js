@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import axios from "axios";
 import { NavLink } from "react-router-dom";
 
 const images = [
@@ -46,17 +45,8 @@ const images = [
   },
 ];
 
-const GenreMovieacc = ({ genre }) => {
+const GenreMovieacc = ({ data }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [data, setData] = useState([]);
-
-  useEffect(() => {
-    axios
-      .get(
-        `https://api.themoviedb.org/3/discover/movie?api_key=864b6602f4018630491e67fa714381e6&include_adult=false&include_video=false&language=fr-FR&page=1&sort_by=popularity.desc&with_genres=${genre}`
-      )
-      .then((res) => setData(res.data.results));
-  }, []);
 
   useEffect(() => {
     const interval = setInterval(handleNext, 6000);
@@ -145,24 +135,14 @@ const GenreMovieacc = ({ genre }) => {
       <div className="carousel-container2">
         <AnimatePresence>
           {data
-            .filter((movie) => {
-              if (
-                movie.original_language === "en" ||
-                movie.original_language === "fr" ||
-                movie.original_language === "jp" ||
-                movie.original_language === "ko"
-              ) {
-                return movie;
-              } else {
-                return null;
-              }
+            ?.filter((movie) => {
+              return ["en", "fr", "jp", "ko"].includes(movie.original_language);
             })
             .map(
               (movie, index) =>
                 index === currentSlide && (
-                  <NavLink to={`/${movie.id}`}>
+                  <NavLink to={`/${movie.id}`} key={index}>
                     <motion.div
-                      key={index}
                       className="slide"
                       initial={{ opacity: 0, x: "100%" }}
                       animate={{ opacity: 1, x: 0 }}
@@ -181,7 +161,9 @@ const GenreMovieacc = ({ genre }) => {
                           <h1 className="title">{movie.title}</h1>
                           <div className="genre-container">
                             {movie.genre_ids.map((genre) => (
-                              <p className="genre">{genreFinder(genre)}</p>
+                              <p key={genre} className="genre">
+                                {genreFinder(genre)}
+                              </p>
                             ))}
                           </div>
                         </div>

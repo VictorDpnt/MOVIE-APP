@@ -7,13 +7,17 @@ import SimilarSerie from "./SimilarSerie";
 import CreditSerie from "./CreditSerie";
 import ProvidersSeries from "./ProvidersSeries";
 import Footer from "./Footer";
+import { TbMovie } from "react-icons/tb";
+import { CgCloseO } from "react-icons/cg";
+import { useLocation } from "react-router-dom";
 
 const SerieInfos = () => {
   const [data, setData] = useState([]);
-  const idUrl = window.location.pathname;
   const notation = Math.floor(data.vote_average * 10);
   const [showProvider, setShowPovider] = useState(false);
   const [checkStorage, setCheckStorage] = useState(false);
+  const location = useLocation();
+  const [idUrl, setIdUrl] = useState(location.pathname);
 
   const isValueInLocalStorage = () => {
     const storedValue = localStorage.getItem("series");
@@ -39,7 +43,21 @@ const SerieInfos = () => {
       .then((res) => setData(res.data));
 
     isValueInLocalStorage();
-  }, [data, id]);
+  }, [id]);
+
+  useEffect(() => {
+    if (data.id) {
+      isValueInLocalStorage();
+    }
+  }, [data.id]);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [idUrl]);
+
+  useEffect(() => {
+    setIdUrl(location.pathname);
+  }, [location]);
 
   const genreFinder = (genre) => {
     switch (genre) {
@@ -163,6 +181,7 @@ const SerieInfos = () => {
                 ? "https://image.tmdb.org/t/p/original" + data.backdrop_path
                 : "./img/movie-clap.jpeg"
             }
+            alt={data.name}
           />
         </div>
         <div className="infos-containt">
@@ -183,12 +202,18 @@ const SerieInfos = () => {
               {checkStorage ? (
                 <div
                   className="heart-liked"
-                  onClick={() => deleteItemFromLocalStorage()}
+                  onClick={() => {
+                    deleteItemFromLocalStorage();
+                    setCheckStorage(!checkStorage);
+                  }}
                 ></div>
               ) : (
                 <div
                   className="heart-NotLiked"
-                  onClick={() => addStorage()}
+                  onClick={() => {
+                    addStorage();
+                    setCheckStorage(!checkStorage);
+                  }}
                 ></div>
               )}
             </div>
@@ -242,6 +267,7 @@ const SerieInfos = () => {
                 onClick={() => setShowPovider(true)}
               >
                 <h4 className="show-providers">Voir les offres</h4>
+                <TbMovie style={{ marginLeft: 4 }} />
               </div>
             </div>
 
@@ -266,12 +292,10 @@ const SerieInfos = () => {
                   : null}
               </div>
               <ProvidersSeries movieId={data.id} movieTitle={data.name} />
-              <p
+              <CgCloseO
                 className="close-providers"
                 onClick={() => setShowPovider(!showProvider)}
-              >
-                X
-              </p>
+              />
             </div>
           )}
         </div>

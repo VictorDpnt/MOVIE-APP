@@ -14,7 +14,7 @@ const BandeAnnonceMovie = ({ movieId }) => {
         }/videos?api_key=864b6602f4018630491e67fa714381e6&language=fr-FR`
       )
       .then((res) => setData(res.data.results[1]));
-  }, [data, idMovie]);
+  }, [idMovie]);
   return (
     <div>
       {data ? (

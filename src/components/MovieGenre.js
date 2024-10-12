@@ -13,7 +13,7 @@ const MovieGenre = ({ genre }) => {
         `https://api.themoviedb.org/3/discover/movie?api_key=864b6602f4018630491e67fa714381e6&include_adult=false&include_video=false&language=fr-FR&page=1&sort_by=popularity.desc&with_genres=${genre}`
       )
       .then((res) => setMovieTendance(res.data.results));
-  }, [movieTendance]);
+  }, []);
 
   const handleScroll = (direction) => {
     const container = document.getElementById(`${genre}`);

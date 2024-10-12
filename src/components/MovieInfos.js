@@ -9,13 +9,17 @@ import CreditMovie from "./CreditMovie";
 import CrewInfos from "./CrewInfos";
 import Providers from "./Providers";
 import Footer from "./Footer";
+import { TbMovie } from "react-icons/tb";
+import { CgCloseO } from "react-icons/cg";
+import { useLocation } from "react-router-dom";
 
 const MovieInfos = () => {
   const [data, setData] = useState([]);
-  const idUrl = window.location.pathname;
   const notation = Math.floor(data.vote_average * 10);
   const [showProvider, setShowPovider] = useState(false);
   const [checkStorage, setCheckStorage] = useState(false);
+  const location = useLocation();
+  const [idUrl, setIdUrl] = useState(location.pathname);
 
   const isValueInLocalStorage = () => {
     const storedValue = localStorage.getItem("movies");
@@ -32,10 +36,24 @@ const MovieInfos = () => {
       .get(
         `https://api.themoviedb.org/3/movie${idUrl}?api_key=864b6602f4018630491e67fa714381e6&query=a&page=1&language=fr-FR`
       )
-      .then((res) => setData(res.data));
+      .then((res) => setData((prevData) => res.data));
 
     isValueInLocalStorage();
-  }, [idUrl, data]);
+  }, [idUrl]);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [idUrl]);
+
+  useEffect(() => {
+    if (data.id) {
+      isValueInLocalStorage();
+    }
+  }, [data.id]);
+
+  useEffect(() => {
+    setIdUrl(location.pathname);
+  }, [location]);
 
   const genreFinder = (genre) => {
     switch (genre) {
@@ -193,13 +211,17 @@ const MovieInfos = () => {
               {checkStorage ? (
                 <div
                   className="heart-liked"
-                  onClick={() => deleteItemFromLocalStorage()}
+                  onClick={() => {
+                    deleteItemFromLocalStorage();
+                    setCheckStorage(!checkStorage);
+                  }}
                 ></div>
               ) : (
                 <div
                   className="heart-NotLiked"
                   onClick={() => {
                     addStorage();
+                    setCheckStorage(!checkStorage);
                   }}
                 ></div>
               )}
@@ -254,7 +276,8 @@ const MovieInfos = () => {
                 onClick={() => setShowPovider(true)}
               >
                 <h4 className="show-providers">Voir les offres</h4>
-                <img src="./img/icon-camera.png" alt="" />
+                <TbMovie />
+                {/* <img src="./img/icon-camera.png" alt="" /> */}
               </div>
             </div>
 
@@ -298,12 +321,10 @@ const MovieInfos = () => {
               </div>
 
               <Providers movieId={data.id} movieTitle={data.title} />
-              <p
+              <CgCloseO
                 className="close-providers"
                 onClick={() => setShowPovider(!showProvider)}
-              >
-                X
-              </p>
+              />
             </div>
           )}
         </div>

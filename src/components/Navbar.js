@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 import SearchWindow from "./SearchWindow";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretDown } from "@fortawesome/free-solid-svg-icons";
+import { FiMenu } from "react-icons/fi";
 
 const Navbar = () => {
   const [showMovie, setShowMovie] = useState(false);
@@ -17,12 +18,12 @@ const Navbar = () => {
     <div id="nav" className="nav-container active">
       <div className="navbar">
         <div className="nav-left">
-          <img
-            src="./img/menu-burger.png"
-            alt=""
+          <FiMenu
             className="burger-menu"
             onClick={() => setShowBurger(!showBurger)}
+            size={39}
           />
+
           <NavLink to="/">
             <div className="logo"></div>
           </NavLink>

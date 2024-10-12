@@ -262,9 +262,22 @@
 
         h6 {
           font-size: 15px;
+
+          @media screen and (max-width: 500px) {
+            display: none;
+          }
         }
         p {
           font-size: 15px;
+          @media screen and (max-width: 500px) {
+            display: none;
+          }
+        }
+        .crew-compo-real {
+          @media screen and (max-width: 500px) {
+            display: block;
+            font-size: 0.6rem;
+          }
         }
       }
 

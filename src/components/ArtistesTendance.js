@@ -14,7 +14,7 @@ const ArtistesTendance = () => {
         "https://api.themoviedb.org/3/person/popular?api_key=864b6602f4018630491e67fa714381e6&language=fr-FR"
       )
       .then((res) => setData(res.data.results));
-  }, [data]);
+  }, []);
 
   const handleScroll = (direction) => {
     const container = document.getElementById(`artiste-scroll`);

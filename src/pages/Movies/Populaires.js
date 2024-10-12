@@ -102,6 +102,10 @@ const Acceuil = () => {
       .then((res) => setData(res.data.results));
   }, [popSort]);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const fetchData = () => {
     setPageNumber(pageNumber + 1);
 

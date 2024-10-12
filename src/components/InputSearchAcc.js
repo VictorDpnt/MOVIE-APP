@@ -21,7 +21,7 @@ const InputSearchAcc = ({ inputSearch }) => {
         `https://api.themoviedb.org/3/search/multi?api_key=864b6602f4018630491e67fa714381e6&query=${inputSearch}&page=1&language=fr-FR`
       )
       .then((res) => setData(res.data.results));
-  }, [data, inputSearch]);
+  }, [inputSearch]);
 
   return (
     <div className="window-containt2">

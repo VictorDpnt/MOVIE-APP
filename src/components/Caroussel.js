@@ -49,6 +49,7 @@ const images = [
 const Caroussel = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [data, setData] = useState([]);
+  const [intervalId, setIntervalId] = useState(null);
 
   useEffect(() => {
     axios
@@ -60,8 +61,15 @@ const Caroussel = () => {
 
   useEffect(() => {
     const interval = setInterval(handleNext, 5000);
+    setIntervalId(interval);
     return () => clearInterval(interval);
   }, []);
+
+  const handleResetInterval = () => {
+    clearInterval(intervalId); // Arrête l'intervalle actuel
+    const newInterval = setInterval(handleNext, 5000); // Démarre un nouvel intervalle
+    setIntervalId(newInterval); // Met à jour l'état avec la nouvelle référence d'intervalle
+  };
 
   const handlePrev = () => {
     setCurrentSlide((prevSlide) =>
@@ -203,10 +211,22 @@ const Caroussel = () => {
           ></span>
         ))}
       </div>
-      <button className="prev" onClick={handlePrev}>
+      <button
+        className="prev"
+        onClick={() => {
+          handlePrev();
+          handleResetInterval();
+        }}
+      >
         <i className="fa-solid fa-angle-left"></i>
       </button>
-      <button className="next" onClick={handleNext}>
+      <button
+        className="next"
+        onClick={() => {
+          handleNext();
+          handleResetInterval();
+        }}
+      >
         <i className="fa-solid fa-angle-right"></i>
       </button>
       <div className="gradient-overlay"></div>

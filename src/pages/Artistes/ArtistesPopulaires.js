@@ -18,6 +18,10 @@ const ArtistesPopulaires = () => {
       .then((res) => setData(res.data.results));
   }, []);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const fetchData = () => {
     setPageNumber(pageNumber + 1);
 

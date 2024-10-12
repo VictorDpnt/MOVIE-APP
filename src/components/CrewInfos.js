@@ -13,7 +13,7 @@ const CrewInfos = ({ id }) => {
         }/credits?api_key=864b6602f4018630491e67fa714381e6&page=1&language=fr-FR`
       )
       .then((res) => setData(res.data.crew));
-  }, [data, id]);
+  }, [id]);
 
   return (
     <div className="crew-container">
@@ -33,7 +33,9 @@ const CrewInfos = ({ id }) => {
             <div className="crew">
               <div className="director">
                 {movie.job === "Director" ? <h5>Réalisateur</h5> : null}
-                {movie.job === "Director" ? <p>{movie.original_name}</p> : null}
+                {movie.job === "Director" ? (
+                  <p className="crew-compo-real">{movie.original_name}</p>
+                ) : null}
               </div>
 
               <div className="music">
@@ -41,7 +43,7 @@ const CrewInfos = ({ id }) => {
                   <h5>Compositeur</h5>
                 ) : null}
                 {movie.job === "Original Music Composer" ? (
-                  <p>{movie.original_name}</p>
+                  <p className="crew-compo-real">{movie.original_name}</p>
                 ) : null}
               </div>
             </div>

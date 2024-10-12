@@ -14,15 +14,25 @@
     color: #dc1927;
     font-weight: bold;
     text-shadow: white 0px 0px 3px;
+    @media screen and (max-width: 500px) {
+      top: 0;
+      right: 13%;
+    }
   }
 
   .title {
     letter-spacing: 1px;
+    text-align: left;
+    margin-top: 30px;
+    @media screen and (max-width: 500px) {
+      text-align: center;
+    }
   }
   .genre-date {
     display: flex;
     text-transform: capitalize;
     margin-bottom: 10px;
+    display: none;
     .date {
       font-weight: 400;
       letter-spacing: 0.5px;
@@ -56,6 +66,9 @@
         margin-right: 15px;
         border-radius: 5px;
         margin-top: 10px;
+        @media screen and (max-width: 500px) {
+          width: 35px;
+        }
       }
     }
   }
